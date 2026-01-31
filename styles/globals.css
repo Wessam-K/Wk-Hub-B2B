@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html[lang="ar"] {
+    direction: rtl;
+    font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-slate-900 text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold 
+           hover:bg-slate-800 transition-all duration-200 
+           focus:ring-4 focus:ring-slate-200 shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-900 px-6 py-3 rounded-lg font-semibold 
+           border-2 border-slate-200 hover:bg-slate-50 hover:border-slate-300
+           transition-all duration-200;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-slate-600 mt-4 max-w-3xl;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 bg-clip-text text-transparent;
+  }
+}
+
+/* Arabic-specific styles */
+[dir="rtl"] {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+}
+
+[dir="rtl"] .space-x-2 > * + * {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .space-x-8 > * + * {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth focus states */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-none ring-2 ring-slate-900 ring-offset-2;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
